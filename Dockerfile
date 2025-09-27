@@ -24,7 +24,7 @@ COPY configure-ssh-user.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/configure-ssh-user.sh
 
 COPY setup-voting.sh /root
-RUN cd /root && chmod +x setup-voting.sh && setup-voting.sh
+RUN cd /root && chmod +x setup-voting.sh && ./setup-voting.sh
 
 # Expose SSH port
 EXPOSE 22
