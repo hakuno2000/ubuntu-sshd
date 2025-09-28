@@ -1,6 +1,6 @@
 cd /root
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-source .profile
+source /root/.profile
 curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 bash nodesource_setup.sh
 apt install nodejs -y
