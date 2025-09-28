@@ -7,15 +7,17 @@ apt install nodejs -y
 git clone https://github.com/decentrio/voting
 cd voting
 git checkout minh/local-node
-sed -i 's#wss://abc.xyz#ws://127.0.0.1:9944#g' server/services/service.ts
-sed -i 's#https://abc.xyz#http://127.0.0.1:9944#g' server/services/service.ts
+sed -i "s#${DEFAULT_WS}#${NEW_WS}#g" server/services/service.ts
+sed -i "s#${DEFAULT_RPC}#${NEW_RPC}#g" server/services/service.ts
 
-tee .env > /dev/null <<'EOF'
-SEED_PHRASE = ""
-OPENAI_API_KEY = ""
+source /root/.env
+
+tee .env > /dev/null <<EOF
+SEED_PHRASE = "$SEED_PHRASE"
+OPENAI_API_KEY = "$OPENAI_API_KEY"
 EOF
 
 npm install
 npm install -g pm2
 pm2 start "npx ts-node server/server.ts" --name npx-spam
-pm2 start "rm -r data && mkdir data && /root/.cargo/bin/cargo run spam" --name cargo-spam
+pm2 start "rm -r data && mkdir data && cargo run spam" --name cargo-spam
