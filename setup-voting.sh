@@ -21,3 +21,7 @@ npm install
 npm install -g pm2
 pm2 start "npx ts-node server/server.ts" --name npx-spam
 pm2 start "rm -r data && mkdir data && /root/.cargo/bin/cargo run spam" --name cargo-spam
+
+crontab -l > newcron
+echo "0 * * * * pm2 stop npx-spam cargo-spam && pm2 restart npx-spam && pm2 restart cargo-spam" >> newcron
+crontab newcron && rm newcron
