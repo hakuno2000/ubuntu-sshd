@@ -21,3 +21,5 @@ npm install
 npm install -g pm2
 pm2 start "npx ts-node server/server.ts" --name npx-spam
 pm2 start "rm -r data && mkdir data && /root/.cargo/bin/cargo run spam" --name cargo-spam
+
+screen -S autohourly -d -m bash /root/restart-voting.sh
