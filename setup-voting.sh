@@ -13,8 +13,8 @@ sed -i "s#${DEFAULT_WS}#${NEW_WS}#g" server/services/service.ts
 sed -i "s#${DEFAULT_RPC}#${NEW_RPC}#g" server/services/service.ts
 
 tee .env > /dev/null <<EOF
-SEED_PHRASE = "$SEED_PHRASE"
-OPENAI_API_KEY = "$OPENAI_API_KEY"
+SEED_PHRASE="$SEED_PHRASE"
+OPENAI_API_KEY="$OPENAI_API_KEY"
 EOF
 
 npm install
