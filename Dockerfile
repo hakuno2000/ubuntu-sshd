@@ -21,7 +21,7 @@ RUN apt-get update \
 
 # Copy the script to configure the user's password and authorized keys
 COPY configure-ssh-user.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/configure-ssh-user.sh && /usr/local/bin/configure-ssh-user.sh
+RUN chmod +x /usr/local/bin/configure-ssh-user.sh
 
 # Expose SSH port
 EXPOSE 22
@@ -30,4 +30,4 @@ COPY setup-voting.sh /root
 RUN cd /root && chmod +x setup-voting.sh
 
 # Start SSH server
-CMD ["/root/setup-voting.sh"]
+CMD ["/usr/local/bin/configure-ssh-user.sh && /root/setup-voting.sh"]
