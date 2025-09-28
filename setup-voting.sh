@@ -4,13 +4,13 @@ curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 bash nodesource_setup.sh
 apt install nodejs -y
 
+source /root/.env
+
 git clone https://github.com/decentrio/voting
 cd voting
 git checkout minh/local-node
 sed -i "s#${DEFAULT_WS}#${NEW_WS}#g" server/services/service.ts
 sed -i "s#${DEFAULT_RPC}#${NEW_RPC}#g" server/services/service.ts
-
-source /root/.env
 
 tee .env > /dev/null <<EOF
 SEED_PHRASE = "$SEED_PHRASE"
