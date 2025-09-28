@@ -31,7 +31,6 @@ COPY setup-voting.sh /root
 COPY restart-voting.sh /root
 RUN chmod +x /root/setup-voting.sh
 RUN chmod +x /root/restart-voting.sh
-RUN screen -S autohourly -d -m bash /root/restart-voting.sh
 
 # Start SSH server
 CMD ["bash", "-c", "/root/setup-voting.sh && /usr/local/bin/configure-ssh-user.sh"]
