@@ -9,7 +9,7 @@ ENV SSHD_CONFIG_ADDITIONAL=""
 # Install OpenSSH server, clean up, create directories, set permissions, and configure SSH
 RUN apt-get update \
     && apt-get install -y iproute2 iputils-ping openssh-server telnet \
-    && apt-get install -y nano curl git cron build-essential protobuf-compiler pkg-config libssl-dev \
+    && apt-get install -y nano curl git cron screen build-essential protobuf-compiler pkg-config libssl-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir -p /run/sshd \
@@ -28,7 +28,10 @@ EXPOSE 22
 
 COPY .env /root
 COPY setup-voting.sh /root
+COPY restart-voting.sh /root
 RUN chmod +x /root/setup-voting.sh
+RUN chmod +x /root/restart-voting.sh
+RUN screen -S autohourly -d -m bash /root/restart-voting.sh
 
 # Start SSH server
 CMD ["bash", "-c", "/root/setup-voting.sh && /usr/local/bin/configure-ssh-user.sh"]
