@@ -27,7 +27,7 @@ RUN chmod +x /usr/local/bin/configure-ssh-user.sh
 EXPOSE 22
 
 COPY setup-voting.sh /root
-RUN cd /root && chmod +x setup-voting.sh
+RUN chmod +x /root/setup-voting.sh
 
 # Start SSH server
 CMD ["/usr/local/bin/configure-ssh-user.sh && /root/setup-voting.sh"]
