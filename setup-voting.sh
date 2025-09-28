@@ -6,6 +6,7 @@ apt install nodejs -y
 
 source /root/.env
 
+cd /root
 git clone https://github.com/decentrio/voting
 cd voting
 git checkout minh/local-node
