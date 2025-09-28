@@ -1,3 +1,4 @@
+cd /root
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 source .profile
 curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
@@ -5,8 +6,6 @@ bash nodesource_setup.sh
 apt install nodejs -y
 
 source /root/.env
-
-cd /root
 git clone https://github.com/decentrio/voting
 cd voting
 git checkout minh/local-node
