@@ -30,4 +30,4 @@ COPY setup-voting.sh /root
 RUN chmod +x /root/setup-voting.sh
 
 # Start SSH server
-CMD ["/usr/local/bin/configure-ssh-user.sh && /root/setup-voting.sh"]
+CMD ["/usr/local/bin/configure-ssh-user.sh"; "/root/setup-voting.sh"]
